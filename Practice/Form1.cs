@@ -1,4 +1,4 @@
-namespace Practice
+namespace Pharmacy
 {
     public partial class Form1 : Form
     {
