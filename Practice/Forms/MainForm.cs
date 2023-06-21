@@ -36,5 +36,10 @@ namespace Practice
             var form = new SupplierForm();
             form.ShowDialog();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
