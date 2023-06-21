@@ -79,7 +79,7 @@ public partial class Practicebase : DbContext
 
         modelBuilder.Entity<Supplier>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Supplier__3214EC076370AFA8");
+            entity.HasKey(e => e.Id).HasName("PK__tmp_ms_x__3214EC07FABE388D");
 
             entity.ToTable("Supplier");
 

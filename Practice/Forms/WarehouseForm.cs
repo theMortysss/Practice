@@ -22,12 +22,13 @@ namespace Practice
             using (Practicebase decanContext = new Practicebase())
             {
                 var products = from product in decanContext.Products
+                               join supplier in decanContext.Suppliers on product.SupplierId equals supplier.Id
                                select new
                                {
                                    Id = product.Id,
                                    Name = product.Name,
                                    Price = product.Price,
-                                   SupplierId = product.SupplierId,
+                                   SupplierId = supplier.Id,
                                    PackingG = product.PackingG,
                                    Quantity = product.Quantity,
                                    ExpirationDate = product.ExpirationDate,
