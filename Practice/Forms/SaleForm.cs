@@ -72,8 +72,8 @@ namespace Practice
             {
                 var product = db.Products.Find((int)comboBox1.SelectedValue);
                 amount = product.Quantity;
-                label1.Visible = true;
-                label1.Text = $"Доступно: {amount}";
+                label3.Visible = true;
+                label3.Text = $"Доступно: {amount}";
             }
         }
     }
