@@ -15,7 +15,6 @@ namespace Practice
     public partial class SaleForm : Form
     {
         private int? amount { get; set; }
-        private List<Product> products { get; set; }
         public SaleForm()
         {
             InitializeComponent();
@@ -26,12 +25,32 @@ namespace Practice
                 comboBox1.DisplayMember = "Name";
             }
         }
+        private void RefreshDataSales()
+        {
+            using (var db = new Practicebase())
+            {
+                var sale = from sales in db.Sales
+                           join products in db.Products on sales.ProductId equals products.Id
+                           select new
+                           {
+                               Id = sales.Id,
+                               ProductId = products.Name,
+                               Quantity = sales.Quantity,
+                               DateOfSale = sales.DateOfSale
+                           };
+                dataGridView4.DataSource = sale.ToList();
+            }
+        }
 
         private void SaleForm_Load(object sender, EventArgs e)
         {
             using (var db = new Practicebase())
             {
-                dataGridView4.DataSource = db.Sales.ToList();
+                var product = db.Products.Find((int)comboBox1.SelectedValue);
+                amount = product.Quantity;
+                label3.Visible = true;
+                label3.Text = $"Доступно: {amount}";
+                RefreshDataSales();
             }
         }
 
@@ -47,16 +66,18 @@ namespace Practice
                 }
                 else
                 {
-                    product.Quantity -= q;
+                    var p = product.Quantity -= q;
                     Sale sale = new Sale
                     {
                         ProductId = product.Id,
                         Quantity = q,
                         DateOfSale = dateTimePicker1.Value
                     };
+                    label3.Text = $"Доступно: {p}";
+                    textBox1.Clear();
                     db.Sales.Add(sale);
                     db.SaveChanges();
-                    dataGridView4.DataSource = db.Sales.ToList();
+                    RefreshDataSales();
                 }
             }
         }
