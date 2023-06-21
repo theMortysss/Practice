@@ -39,7 +39,10 @@ namespace Practice
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            using (var db = new Practicebase())
+            {
+                db.SaveChanges();
+            }
         }
     }
 }

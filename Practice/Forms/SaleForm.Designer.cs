@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel3 = new Panel();
+            label3 = new Label();
             label2 = new Label();
             dateTimePicker1 = new DateTimePicker();
             comboBox1 = new ComboBox();
@@ -42,6 +43,7 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(dateTimePicker1);
             panel3.Controls.Add(comboBox1);
@@ -53,6 +55,16 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(800, 125);
             panel3.TabIndex = 2;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(216, 71);
+            label3.Name = "label3";
+            label3.Size = new Size(78, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Доступно:";
+            label3.Visible = false;
             // 
             // label2
             // 
@@ -77,6 +89,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(170, 28);
             comboBox1.TabIndex = 3;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // textBox1
             // 
@@ -84,6 +97,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(172, 27);
             textBox1.TabIndex = 2;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -102,16 +116,17 @@
             button2.TabIndex = 0;
             button2.Text = "Продать";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // dataGridView4
             // 
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Dock = DockStyle.Fill;
-            dataGridView4.Location = new Point(0, 0);
+            dataGridView4.Dock = DockStyle.Bottom;
+            dataGridView4.Location = new Point(0, 131);
             dataGridView4.Name = "dataGridView4";
             dataGridView4.RowHeadersWidth = 51;
             dataGridView4.RowTemplate.Height = 29;
-            dataGridView4.Size = new Size(800, 450);
+            dataGridView4.Size = new Size(800, 319);
             dataGridView4.TabIndex = 3;
             // 
             // SaleForm
@@ -123,6 +138,7 @@
             Controls.Add(dataGridView4);
             Name = "SaleForm";
             Text = "SaleForm";
+            Load += SaleForm_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
@@ -139,5 +155,6 @@
         private Label label1;
         private Button button2;
         private DataGridView dataGridView4;
+        private Label label3;
     }
 }
