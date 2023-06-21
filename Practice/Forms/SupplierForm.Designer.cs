@@ -51,6 +51,7 @@
             Controls.Add(dataGridView5);
             Name = "SupplierForm";
             Text = "SupplierForm";
+            Load += SupplierForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
             ResumeLayout(false);
         }
