@@ -28,7 +28,7 @@ namespace Practice
                                    Id = product.Id,
                                    Name = product.Name,
                                    Price = product.Price,
-                                   SupplierId = supplier.Name,
+                                   SupplierId = supplier.Id,
                                    PackingG = product.PackingG,
                                    Quantity = product.Quantity,
                                    ExpirationDate = product.ExpirationDate,
