@@ -15,6 +15,25 @@ namespace Practice
         public WarehouseForm()
         {
             InitializeComponent();
+            RefreshDataProduct();
+        }
+        private void RefreshDataProduct()
+        {
+            using (Practicebase decanContext = new Practicebase())
+            {
+                var students = from product in decanContext.Products
+                               select new
+                               {
+                                   Id = product.Id,
+                                   Name = product.Name,
+                                   Price = product.Price,
+                                   SupplierId = product.SupplierId,
+                                   PackingG = product.PackingG,
+                                   Quantity = product.Quantity,
+                                   ExpirationDate = product.ExpirationDate,
+                               };
+                dataGridView1.DataSource = students.ToList();
+            }
         }
     }
 }
