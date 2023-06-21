@@ -21,7 +21,7 @@ namespace Practice
         {
             using (Practicebase decanContext = new Practicebase())
             {
-                var students = from product in decanContext.Products
+                var products = from product in decanContext.Products
                                select new
                                {
                                    Id = product.Id,
@@ -32,7 +32,7 @@ namespace Practice
                                    Quantity = product.Quantity,
                                    ExpirationDate = product.ExpirationDate,
                                };
-                dataGridView1.DataSource = students.ToList();
+                dataGridView1.DataSource = products.ToList();
             }
         }
     }
