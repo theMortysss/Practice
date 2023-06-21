@@ -47,53 +47,53 @@
             // 
             // button1
             // 
-            button1.Dock = DockStyle.Left;
-            button1.Location = new Point(0, 0);
+            button1.Location = new Point(12, 140);
             button1.Name = "button1";
-            button1.Size = new Size(167, 450);
+            button1.Size = new Size(161, 282);
             button1.TabIndex = 0;
             button1.Text = "Заказ";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Dock = DockStyle.Top;
-            button2.Location = new Point(167, 0);
+            button2.Location = new Point(91, 12);
             button2.Name = "button2";
             button2.Size = new Size(633, 104);
             button2.TabIndex = 1;
             button2.Text = "Продажи";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button4
             // 
-            button4.Dock = DockStyle.Right;
-            button4.Location = new Point(637, 104);
+            button4.Location = new Point(625, 140);
             button4.Name = "button4";
-            button4.Size = new Size(163, 346);
+            button4.Size = new Size(163, 282);
             button4.TabIndex = 2;
             button4.Text = "Поставщики";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
-            button5.Dock = DockStyle.Fill;
-            button5.Location = new Point(167, 104);
+            button5.Location = new Point(241, 140);
             button5.Name = "button5";
-            button5.Size = new Size(470, 346);
+            button5.Size = new Size(318, 129);
             button5.TabIndex = 3;
             button5.Text = "Склад";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
-            button6.Dock = DockStyle.Bottom;
-            button6.Location = new Point(167, 345);
+            button6.Location = new Point(241, 305);
             button6.Name = "button6";
-            button6.Size = new Size(470, 105);
+            button6.Size = new Size(318, 117);
             button6.TabIndex = 4;
             button6.Text = "Поставки";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // MainForm
             // 
