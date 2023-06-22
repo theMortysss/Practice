@@ -44,12 +44,12 @@
             // dataGridView3
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Dock = DockStyle.Fill;
-            dataGridView3.Location = new Point(0, 0);
+            dataGridView3.Dock = DockStyle.Bottom;
+            dataGridView3.Location = new Point(0, 131);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.RowHeadersWidth = 51;
             dataGridView3.RowTemplate.Height = 29;
-            dataGridView3.Size = new Size(800, 450);
+            dataGridView3.Size = new Size(800, 319);
             dataGridView3.TabIndex = 2;
             // 
             // SupplieForm

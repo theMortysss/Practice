@@ -27,21 +27,20 @@ namespace Practice
             {
                 var sales = db.Sales.ToList();
                 var products = db.Products.ToList();
-                dataGridView2.DataSource = MakeOrder(products, sales);
+                dataGridView2.DataSource = MakeOrder(products);
             }
         }
 
-        public static List<Product> MakeOrder(List<Product> products, List<Sale> sales)
+        public static List<Product> MakeOrder(List<Product> products)
         {
             var goodsToRestock = new List<Product>();
-            var allRecentSales = sales.Where(s => DateTime.Now.AddDays(-SaleDayCount) < s.DateOfSale).ToList();
 
-            goodsToRestock.AddRange(GetProductsToRestock(products, allRecentSales));
+            goodsToRestock.AddRange(GetProductsToRestock(products));
 
             return goodsToRestock;
         }
 
-        private static List<Product> GetProductsToRestock(List<Product> products, List<Sale> allRecentSales)
+        private static List<Product> GetProductsToRestock(List<Product> products)
         {
             var toRestock = new List<Product>();
             foreach (var product in products)
@@ -53,6 +52,7 @@ namespace Practice
         private static void CheckAddToRestockList(Product product, List<Product> toRestock)
         {
             var recentProductSales = product.GetRecentSales(SaleDayCount);
+            MessageBox.Show($"{recentProductSales.Count}");
             var expectedAmount = GetExpectedOrderAmount(recentProductSales);
             var batch = product;
             if (product.Quantity < expectedAmount)
@@ -75,6 +75,18 @@ namespace Practice
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void OrderForm_Load(object sender, EventArgs e)
+        {
+            //using (var context = new Practicebase())
+            //{
+            //    foreach (var product in context.Products.ToList())
+            //    {
+            //        MessageBox.Show($"{product.GetRecentSales(7).Count}");
+
+            //    }
+            //}
         }
     }
 }
