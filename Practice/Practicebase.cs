@@ -37,7 +37,6 @@ public partial class Practicebase : DbContext
             entity.ToTable("Product");
 
             entity.Property(e => e.ExpirationDate)
-                .HasColumnType("datetime")
                 .HasColumnName("Expiration_date");
             entity.Property(e => e.PackingG).HasColumnName("Packing_g");
             entity.Property(e => e.Price).HasColumnType("smallmoney");

@@ -5,6 +5,24 @@ namespace Practice
         public MainForm()
         {
             InitializeComponent();
+
+            RemoveExpiretionProducts();
+        }
+
+        private void RemoveExpiretionProducts()
+        {
+            using (var context = new Practicebase())
+            {
+                var unsoldSupplies = context.Supplies.Where(s => s.Quantity > 0).ToList();
+
+                foreach (var supply in unsoldSupplies)
+                {
+                    context.Entry(supply).Reference(s => s.Product).Load();
+                    if (supply.DateOfSupplie.AddDays(supply.Product.ExpirationDate) < DateTime.Today)
+                        supply.Quantity = 0;
+                }
+                context.SaveChanges();
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)

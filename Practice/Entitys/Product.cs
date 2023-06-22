@@ -17,7 +17,7 @@ public partial class Product
 
     public int? Quantity { get; set; }
 
-    public DateTime? ExpirationDate { get; set; }
+    public int ExpirationDate { get; set; }
 
     public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();
 

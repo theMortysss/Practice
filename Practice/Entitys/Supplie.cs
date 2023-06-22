@@ -13,7 +13,7 @@ public partial class Supplie
 
     public int? Quantity { get; set; }
 
-    public DateTime? DateOfSupplie { get; set; }
+    public DateTime DateOfSupplie { get; set; }
 
     public virtual Product? Product { get; set; }
 
