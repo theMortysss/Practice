@@ -13,40 +13,68 @@ namespace Practice
 {
     public partial class OrderForm : Form
     {
+        private const int SaleDayCount = 7;
+        private const double OrderAmountMargin = 0.3;
+
         public OrderForm()
         {
             InitializeComponent();
         }
 
-        private void OrderForm_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            using (var context = new Practicebase())
+            using (var db = new Practicebase())
             {
-                var order = from product in context.Products
-                            select new
-                            {
-                                Id = product.Id,
-                                Name = product.Name,
-                                Price = product.Price,
-                                SupplierId = product.SupplierId,
-                                PackingG = product.PackingG,
-                                Quantity = product.Quantity,
-                                ExpirationDate = product.ExpirationDate,
-                            };
-                dataGridView2.DataSource = order.ToList();
+                var sales = db.Sales.ToList();
+                var products = db.Products.ToList();
+                dataGridView2.DataSource = MakeOrder(products, sales);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public static List<Product> MakeOrder(List<Product> products, List<Sale> sales)
         {
-            MakeOrder();
+            var goodsToRestock = new List<Product>();
+            var allRecentSales = sales.Where(s => DateTime.Now.AddDays(-SaleDayCount) < s.DateOfSale).ToList();
+
+            goodsToRestock.AddRange(GetProductsToRestock(products, allRecentSales));
+
+            return goodsToRestock;
         }
 
-        private List<Product> MakeOrder()
+        private static List<Product> GetProductsToRestock(List<Product> products, List<Sale> allRecentSales)
         {
-            return null;
+            var toRestock = new List<Product>();
+            foreach (var product in products)
+                CheckAddToRestockList(product, toRestock);
+
+            return toRestock;
         }
 
+        private static void CheckAddToRestockList(Product product, List<Product> toRestock)
+        {
+            var recentProductSales = product.GetRecentSales(SaleDayCount);
+            var expectedAmount = GetExpectedOrderAmount(recentProductSales);
+            var batch = product;
+            if (product.Quantity < expectedAmount)
+            {
+                batch.Quantity = expectedAmount - product.Quantity;
+                toRestock.Add(batch);
+            }
+        }
 
+        private static int GetExpectedOrderAmount(List<Sale> recentSales)
+        {
+            if (recentSales.Count == 0)
+                return 0;
+            var avg = recentSales.Sum(s => s.Quantity) / (double)SaleDayCount;
+            var orderAmount = (int)Math.Ceiling(avg);
+            var margin = (int)Math.Ceiling(orderAmount * OrderAmountMargin);
+            return orderAmount + margin;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

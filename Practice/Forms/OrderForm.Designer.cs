@@ -31,6 +31,7 @@
             dataGridView2 = new DataGridView();
             button1 = new Button();
             panel1 = new Panel();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -48,22 +49,33 @@
             // 
             // button1
             // 
-            button1.Location = new Point(54, 123);
+            button1.Location = new Point(3, 3);
             button1.Name = "button1";
-            button1.Size = new Size(158, 29);
+            button1.Size = new Size(294, 29);
             button1.TabIndex = 1;
-            button1.Text = "Оформить заказ";
+            button1.Text = "Сформировать заказ";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // panel1
             // 
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(300, 450);
             panel1.TabIndex = 4;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(3, 418);
+            button2.Name = "button2";
+            button2.Size = new Size(294, 29);
+            button2.TabIndex = 2;
+            button2.Text = "Оформить заказ";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // OrderForm
             // 
@@ -74,7 +86,6 @@
             Controls.Add(panel1);
             Name = "OrderForm";
             Text = "OrderForm";
-            Load += OrderForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -85,5 +96,6 @@
         private DataGridView dataGridView2;
         private Button button1;
         private Panel panel1;
+        private Button button2;
     }
 }
