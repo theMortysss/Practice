@@ -7,6 +7,7 @@ namespace Practice
             InitializeComponent();
 
             RemoveExpiretionProducts();
+            GenerateRndQuantity();
         }
 
         private void RemoveExpiretionProducts()
@@ -21,6 +22,16 @@ namespace Practice
                     if (supply.DateOfSupplie.AddDays(supply.Product.ExpirationDate) < DateTime.Today)
                         supply.Quantity = 0;
                 }
+                context.SaveChanges();
+            }
+        }
+        private void GenerateRndQuantity()
+        {
+            using (var context = new Practicebase())
+            {
+                var rnd = new Random();
+                (from supplier in context.Suppliers
+                 select supplier.Quantity).ToList().ForEach(s=>s.Equals(rnd.Next(0,100)));
                 context.SaveChanges();
             }
         }

@@ -22,10 +22,11 @@ namespace Practice
             using (var context = new Practicebase())
             {
                 var supplies = from supplie in context.Supplies
+                               join supllier in context.Suppliers on supplie.SupplierId equals supllier.Id
                                select new
                                {
                                    Id = supplie.Id,
-                                   Supplier_Id = supplie.SupplierId,
+                                   Supplier_Id = supllier.Name,
                                    Quantity = supplie.Quantity,
                                    DateOfSupplie = supplie.DateOfSupplie,
                                };
