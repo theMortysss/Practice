@@ -21,6 +21,7 @@ namespace Practice
         {
             using (var context = new Practicebase())
             {
+                var rnd = new Random();
                 var supplier = from sup in context.Suppliers
                                select new
                                {
