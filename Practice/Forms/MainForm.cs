@@ -15,8 +15,22 @@ namespace Practice
             InitializeComponent();
             RemoveExpiretionProducts();
             GenerateRndQuantity();
+            GetPreference();
         }
-
+        private static void GetPreference()
+        {
+            using (var context = new Practicebase())
+            {
+                var suppliers = context.Suppliers.ToList();
+                foreach (var sup in suppliers)
+                {
+                    context.Entry(sup).Reference(s => s.Product).Load();
+                    if (sup.Preference == 1)
+                        sup.Product.SupplierId = sup.Id;
+                }
+                context.SaveChanges();
+            }
+        }
         private void RemoveExpiretionProducts()
         {
             using (var context = new Practicebase())

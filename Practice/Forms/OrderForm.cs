@@ -30,12 +30,13 @@ namespace Practice
                 dataGridView2.DataSource = MakeOrder(products);
             }
         }
-
-        public static List<Product> MakeOrder(List<Product> products)
+        
+        private static List<Product> MakeOrder(List<Product> products)
         {
             var goodsToRestock = new List<Product>();
 
             goodsToRestock.AddRange(GetProductsToRestock(products));
+
 
             return goodsToRestock;
         }
@@ -52,7 +53,6 @@ namespace Practice
         private static void CheckAddToRestockList(Product product, List<Product> toRestock)
         {
             var recentProductSales = product.GetRecentSales(SaleDayCount);
-            MessageBox.Show($"{recentProductSales.Count}");
             var expectedAmount = GetExpectedOrderAmount(recentProductSales);
             var batch = product;
             if (product.Quantity < expectedAmount)
