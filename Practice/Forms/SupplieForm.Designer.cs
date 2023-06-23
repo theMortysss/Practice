@@ -28,28 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel2 = new Panel();
             dataGridView3 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
             // 
-            // panel2
-            // 
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(800, 125);
-            panel2.TabIndex = 3;
-            // 
             // dataGridView3
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Dock = DockStyle.Bottom;
-            dataGridView3.Location = new Point(0, 131);
+            dataGridView3.Dock = DockStyle.Fill;
+            dataGridView3.Location = new Point(0, 0);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.RowHeadersWidth = 51;
             dataGridView3.RowTemplate.Height = 29;
-            dataGridView3.Size = new Size(800, 319);
+            dataGridView3.Size = new Size(800, 450);
             dataGridView3.TabIndex = 2;
             // 
             // SupplieForm
@@ -57,7 +48,6 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(panel2);
             Controls.Add(dataGridView3);
             Name = "SupplieForm";
             Text = "SupplieForm";
@@ -66,8 +56,6 @@
         }
 
         #endregion
-
-        private Panel panel2;
         private DataGridView dataGridView3;
     }
 }

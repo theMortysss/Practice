@@ -59,7 +59,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(216, 71);
+            label3.Location = new Point(436, 39);
             label3.Name = "label3";
             label3.Size = new Size(78, 20);
             label3.TabIndex = 6;
@@ -69,7 +69,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(216, 18);
+            label2.Location = new Point(249, 17);
             label2.Name = "label2";
             label2.Size = new Size(90, 20);
             label2.TabIndex = 5;
@@ -77,7 +77,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(394, 41);
+            dateTimePicker1.Location = new Point(592, 39);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(176, 27);
             dateTimePicker1.TabIndex = 4;
@@ -85,7 +85,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(40, 40);
+            comboBox1.Location = new Point(40, 41);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(170, 28);
             comboBox1.TabIndex = 3;
@@ -93,7 +93,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(216, 41);
+            textBox1.Location = new Point(249, 39);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(172, 27);
             textBox1.TabIndex = 2;
@@ -110,12 +110,13 @@
             // 
             // button2
             // 
-            button2.Location = new Point(576, 39);
+            button2.BackColor = SystemColors.ButtonFace;
+            button2.Location = new Point(350, 83);
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
             button2.TabIndex = 0;
             button2.Text = "Продать";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // dataGridView4
