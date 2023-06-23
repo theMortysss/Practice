@@ -47,52 +47,59 @@
             // 
             // button1
             // 
-            button1.Location = new Point(12, 140);
+            button1.BackColor = SystemColors.ButtonFace;
+            button1.Location = new Point(12, 172);
             button1.Name = "button1";
-            button1.Size = new Size(161, 282);
+            button1.Size = new Size(215, 94);
             button1.TabIndex = 0;
             button1.Text = "Заказ";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(91, 12);
+            button2.BackColor = SystemColors.ButtonFace;
+            button2.Location = new Point(573, 172);
             button2.Name = "button2";
-            button2.Size = new Size(633, 104);
+            button2.Size = new Size(215, 94);
             button2.TabIndex = 1;
             button2.Text = "Продажи";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button4
             // 
-            button4.Location = new Point(625, 140);
+            button4.BackColor = SystemColors.ButtonFace;
+            button4.Location = new Point(291, 311);
             button4.Name = "button4";
-            button4.Size = new Size(163, 282);
+            button4.Size = new Size(215, 94);
             button4.TabIndex = 2;
             button4.Text = "Поставщики";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // button5
             // 
-            button5.Location = new Point(241, 140);
+            button5.BackColor = SystemColors.ButtonFace;
+            button5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.ForeColor = SystemColors.ActiveCaptionText;
+            button5.Location = new Point(291, 172);
             button5.Name = "button5";
-            button5.Size = new Size(318, 129);
+            button5.Size = new Size(215, 94);
             button5.TabIndex = 3;
             button5.Text = "Склад";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
             // button6
             // 
-            button6.Location = new Point(241, 305);
+            button6.BackColor = SystemColors.ButtonFace;
+            button6.Location = new Point(291, 29);
             button6.Name = "button6";
-            button6.Size = new Size(318, 117);
+            button6.Size = new Size(215, 94);
             button6.TabIndex = 4;
             button6.Text = "Поставки";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
             // MainForm

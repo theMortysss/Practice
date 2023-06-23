@@ -30,7 +30,7 @@ namespace Practice
                 dataGridView2.DataSource = MakeOrder(products);
             }
         }
-        
+
         private static List<Product> MakeOrder(List<Product> products)
         {
             var goodsToRestock = new List<Product>();

@@ -30,65 +30,42 @@
         {
             dataGridView2 = new DataGridView();
             button1 = new Button();
-            panel1 = new Panel();
-            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(300, 0);
+            dataGridView2.Dock = DockStyle.Top;
+            dataGridView2.Location = new Point(0, 0);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(500, 450);
+            dataGridView2.Size = new Size(800, 322);
             dataGridView2.TabIndex = 3;
             // 
             // button1
             // 
-            button1.Location = new Point(3, 3);
+            button1.BackColor = SystemColors.ButtonFace;
+            button1.Location = new Point(277, 348);
             button1.Name = "button1";
-            button1.Size = new Size(294, 29);
+            button1.Size = new Size(215, 79);
             button1.TabIndex = 1;
             button1.Text = "Сформировать заказ";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(300, 450);
-            panel1.TabIndex = 4;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(3, 418);
-            button2.Name = "button2";
-            button2.Size = new Size(294, 29);
-            button2.TabIndex = 2;
-            button2.Text = "Оформить заказ";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // OrderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(dataGridView2);
-            Controls.Add(panel1);
             Name = "OrderForm";
             Text = "OrderForm";
             Load += OrderForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -96,7 +73,5 @@
 
         private DataGridView dataGridView2;
         private Button button1;
-        private Panel panel1;
-        private Button button2;
     }
 }
