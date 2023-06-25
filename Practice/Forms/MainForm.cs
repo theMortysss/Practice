@@ -62,23 +62,30 @@ namespace Practice
                     sup.Price = rnd.Next(100, 150);
                     sup.DistanceKm = rnd.Next(1, 20);
                     sup.ShippingCoast = rnd.Next(30, 50);
-
-                    sup.Preference = (int)(sup.Price + (decimal)sup.DistanceKm + sup.ShippingCoast);
-
-                    if (sup.Quantity < CheckAddToRestockList(context.Products.Find(sup.ProductId)))
-                    {
-                        sup.Preference = 3;
-                    }
-                    else if (sup.Preference != supplier.Min(sup => sup.Price + (decimal)sup.DistanceKm + sup.ShippingCoast))
-                    {
-                        sup.Preference = 2;
-                    }
-                    else
-                    {
-                        sup.Preference = 1;
-                    }
                 }
 
+                var count = supplier.DistinctBy(s => s.ProductId).Count();
+                
+                for (var i = 1; i <= count; i++)
+                {
+                    foreach (var sup in supplier.Where(s => s.ProductId == i))
+                    {
+                        sup.Preference = (int)(sup.Price + (decimal)sup.DistanceKm + sup.ShippingCoast);
+
+                        if (sup.Quantity < CheckAddToRestockList(context.Products.Find(sup.ProductId)))
+                        {
+                            sup.Preference = 3;
+                        }
+                        else if (sup.Preference != supplier.Where(s => s.ProductId == i).Min(sup => sup.Price + (decimal)sup.DistanceKm + sup.ShippingCoast))
+                        {
+                            sup.Preference = 2;
+                        }
+                        else
+                        {
+                            sup.Preference = 1;
+                        }
+                    }
+                }
                 context.SaveChanges();
             }
         }

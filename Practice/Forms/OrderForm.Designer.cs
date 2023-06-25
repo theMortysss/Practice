@@ -64,7 +64,6 @@
             Controls.Add(dataGridView2);
             Name = "OrderForm";
             Text = "OrderForm";
-            Load += OrderForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }

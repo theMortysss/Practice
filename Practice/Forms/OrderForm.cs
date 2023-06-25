@@ -27,7 +27,24 @@ namespace Practice
             {
                 var sales = db.Sales.ToList();
                 var products = db.Products.ToList();
-                dataGridView2.DataSource = MakeOrder(products);
+                var supplies = db.Supplies.ToList();
+                var order = MakeOrder(products);
+                dataGridView2.DataSource = order;
+
+                foreach (var item in order)
+                {
+                    var sup = new Supplie
+                    {
+                        SupplierId = item.SupplierId,
+                        ProductId = item.Id,
+                        Quantity = item.Quantity,
+                        DateOfSupplie = DateTime.Now,
+                    };
+                    db.Supplies.Add(sup);
+                }
+
+                db.SaveChanges();
+
             }
         }
 
@@ -36,7 +53,6 @@ namespace Practice
             var goodsToRestock = new List<Product>();
 
             goodsToRestock.AddRange(GetProductsToRestock(products));
-
 
             return goodsToRestock;
         }
@@ -70,23 +86,6 @@ namespace Practice
             var orderAmount = (int)Math.Ceiling(avg);
             var margin = (int)Math.Ceiling(orderAmount * OrderAmountMargin);
             return orderAmount + margin;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OrderForm_Load(object sender, EventArgs e)
-        {
-            //using (var context = new Practicebase())
-            //{
-            //    foreach (var product in context.Products.ToList())
-            //    {
-            //        MessageBox.Show($"{product.GetRecentSales(7).Count}");
-
-            //    }
-            //}
         }
     }
 }
