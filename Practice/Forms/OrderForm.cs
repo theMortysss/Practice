@@ -1,6 +1,8 @@
-﻿using Practice.Entitys;
+﻿using Microsoft.EntityFrameworkCore;
+using Practice.Entitys;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -28,8 +30,11 @@ namespace Practice
                 var sales = db.Sales.ToList();
                 var products = db.Products.ToList();
                 var supplies = db.Supplies.ToList();
+                List<int> tmp = products.Select(p => p.Quantity).ToList();
+
                 var order = MakeOrder(products);
 
+                
                 var list = from product in order
                            join supplier in db.Suppliers on product.SupplierId equals supplier.Id
                            select new
@@ -43,7 +48,7 @@ namespace Practice
                            };
 
                 dataGridView2.DataSource = list.ToList();
-
+                
                 foreach (var item in order)
                 {
                     var sup = new Supplie
@@ -53,11 +58,9 @@ namespace Practice
                         Quantity = item.Quantity,
                         DateOfSupplie = DateTime.Now,
                     };
-                    db.Supplies.Add(sup);
-
-                    db.Products.Find(item.Id).Quantity += item.Quantity;
+                    db.Products.Find(item.Id).Quantity += tmp[item.Id - 1];
                 }
-
+                
                 db.SaveChanges();
 
             }
@@ -71,7 +74,15 @@ namespace Practice
 
             return goodsToRestock;
         }
-
+        private static int GetStorage(List<Product> products)
+        {
+            var tmp = new List<Product>();
+            foreach (var product in products)
+            {
+                tmp.Add( product );
+            }
+            return tmp[0].Quantity;
+        }
         private static List<Product> GetProductsToRestock(List<Product> products)
         {
             var toRestock = new List<Product>();
