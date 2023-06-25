@@ -26,6 +26,7 @@ namespace Practice
                                join sup in context.Suppliers on product.SupplierId equals sup.Id
                                select new
                                {
+                                   Поставщик = sup.Name,
                                    Товар = product.Name,
                                    Цена = sup.Price,
                                    Количество = sup.Quantity,
