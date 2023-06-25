@@ -29,7 +29,20 @@ namespace Practice
                 var products = db.Products.ToList();
                 var supplies = db.Supplies.ToList();
                 var order = MakeOrder(products);
-                dataGridView2.DataSource = order;
+
+                var list = from product in order
+                           join supplier in db.Suppliers on product.SupplierId equals supplier.Id
+                           select new
+                           {
+                               Название = product.Name,
+                               Цена = product.Price,
+                               Поставщик = supplier.Name,
+                               Фасовка = product.PackingG,
+                               Количество = product.Quantity,
+                               Годность = product.ExpirationDate
+                           };
+
+                dataGridView2.DataSource = list.ToList();
 
                 foreach (var item in order)
                 {

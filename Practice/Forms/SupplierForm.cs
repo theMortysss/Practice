@@ -24,13 +24,12 @@ namespace Practice
                 var supplier = from sup in context.Suppliers
                                select new
                                {
-                                   ID = sup.Id,
-                                   Product = sup.ProductId,
-                                   Price = sup.Price,
-                                   Quantity = sup.Quantity,
-                                   Distance = sup.DistanceKm,
-                                   Shipping = sup.ShippingCoast,
-                                   Preference = sup.Preference
+                                   Товар = sup.ProductId,
+                                   Цена = sup.Price,
+                                   Количество = sup.Quantity,
+                                   Расстояние = sup.DistanceKm,
+                                   Доставка = sup.ShippingCoast,
+                                   Предпочтение = sup.Preference
                                };
                 dataGridView5.DataSource = supplier.ToList();
             }

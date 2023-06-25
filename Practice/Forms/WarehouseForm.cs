@@ -25,13 +25,12 @@ namespace Practice
                                join supplier in decanContext.Suppliers on product.SupplierId equals supplier.Id
                                select new
                                {
-                                   Id = product.Id,
-                                   Name = product.Name,
-                                   Price = product.Price,
-                                   SupplierId = supplier.Name,
-                                   PackingG = product.PackingG,
-                                   Quantity = product.Quantity,
-                                   ExpirationDate = product.ExpirationDate,
+                                   Название = product.Name,
+                                   Цена = product.Price,
+                                   Поставщик = supplier.Name,
+                                   Фасовка = product.PackingG,
+                                   Количество = product.Quantity,
+                                   Годность = product.ExpirationDate,
                                };
                 dataGridView1.DataSource = products.ToList();
             }

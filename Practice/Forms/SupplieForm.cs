@@ -25,10 +25,9 @@ namespace Practice
                                join supllier in context.Suppliers on supplie.SupplierId equals supllier.Id
                                select new
                                {
-                                   Id = supplie.Id,
-                                   Supplier_Id = supllier.Name,
-                                   Quantity = supplie.Quantity,
-                                   DateOfSupplie = supplie.DateOfSupplie,
+                                   Поставщик = supllier.Name,
+                                   Количество = supplie.Quantity,
+                                   ДатаПоставки = supplie.DateOfSupplie,
                                };
                 dataGridView3.DataSource = supplies.ToList();
             }

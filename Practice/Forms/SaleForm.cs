@@ -33,10 +33,9 @@ namespace Practice
                            join products in db.Products on sales.ProductId equals products.Id
                            select new
                            {
-                               Id = sales.Id,
-                               ProductId = products.Name,
-                               Quantity = sales.Quantity,
-                               DateOfSale = sales.DateOfSale
+                               Товар = products.Name,
+                               Количество = sales.Quantity,
+                               ДатаПродажи = sales.DateOfSale
                            };
                 dataGridView4.DataSource = sale.ToList();
             }

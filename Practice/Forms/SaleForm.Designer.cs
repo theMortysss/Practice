@@ -121,6 +121,8 @@
             // 
             // dataGridView4
             // 
+            dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView4.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView4.Dock = DockStyle.Bottom;
             dataGridView4.Location = new Point(0, 131);
