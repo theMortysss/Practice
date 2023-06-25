@@ -30,13 +30,15 @@ namespace Practice
                 var sales = db.Sales.ToList();
                 var products = db.Products.ToList();
                 var supplies = db.Supplies.ToList();
+                var suppliers = db.Suppliers.ToList();
+
                 List<int> tmp = products.Select(p => p.Quantity).ToList();
 
                 var order = MakeOrder(products);
 
-                
+
                 var list = from product in order
-                           join supplier in db.Suppliers on product.SupplierId equals supplier.Id
+                           join supplier in suppliers on product.SupplierId equals supplier.Id
                            select new
                            {
                                Название = product.Name,
@@ -67,13 +69,33 @@ namespace Practice
             }
         }
 
-        private static List<Product> MakeOrder(List<Product> products)
+        private static List<Product> MakeOrder(List<Product> productss)
         {
-            var goodsToRestock = new List<Product>();
+            using (var db = new Practicebase())
+            {
+                var goodsToRestock = new List<Product>();
+                var suppliers = db.Suppliers.ToList();
+                foreach (var sup in suppliers)
+                {
+                    db.Entry(sup).Reference(s => s.Product).Load();
+                    if (sup.Preference == 1)
+                    {
+                        var products = productss.Where(p => p.SupplierId == sup.Id).ToList();
+                        goodsToRestock.AddRange(GetProductsToRestock(products));
+                    }
+                    else if (sup.Preference == 2)
+                    {
+                        var products = productss.Where(p => p.SupplierId == sup.Id).ToList();
+                        goodsToRestock.AddRange(GetProductsToRestock(products));
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
 
-            goodsToRestock.AddRange(GetProductsToRestock(products));
-
-            return goodsToRestock;
+                return goodsToRestock;
+            }
         }
 
         private static List<Product> GetProductsToRestock(List<Product> products)

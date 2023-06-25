@@ -78,7 +78,6 @@ namespace Practice
                     foreach (var sup in supplier.Where(s => s.ProductId == i))
                     {
                         sup.Preference = (int)(sup.Price + (decimal)sup.DistanceKm + sup.ShippingCoast);
-                        MessageBox.Show($"{CheckAddToRestockList(context.Products.Find(sup.ProductId))}");
                         if (sup.Quantity < CheckAddToRestockList(context.Products.Find(sup.ProductId)))
                         {
                             sup.Preference = 3;
