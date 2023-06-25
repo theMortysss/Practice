@@ -22,8 +22,9 @@ namespace Practice
         {
             using (var context = new Practicebase())
             {
-                var supplier = from product in context.Products
-                               join sup in context.Suppliers on product.SupplierId equals sup.Id
+                //var supplier = context.Suppliers;
+                var supplier = from sup in context.Suppliers
+                               join product in context.Products on sup.ProductId equals product.Id
                                select new
                                {
                                    Поставщик = sup.Name,

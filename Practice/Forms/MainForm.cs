@@ -20,6 +20,9 @@ namespace Practice
                 GenerateRndQuantity();
                 GetPreference();
             }
+            RemoveExpiretionProducts();
+            GenerateRndQuantity();
+            GetPreference();
         }
         private static void GetPreference()
         {
@@ -62,7 +65,7 @@ namespace Practice
 
                 foreach (var sup in supplier)
                 {
-                    sup.Quantity = rnd.Next(0, 100);
+                    sup.Quantity = rnd.Next(0, 200);
                     sup.Price = rnd.Next(100, 150);
                     sup.DistanceKm = rnd.Next(1, 20);
                     sup.ShippingCoast = rnd.Next(30, 50);
@@ -75,7 +78,7 @@ namespace Practice
                     foreach (var sup in supplier.Where(s => s.ProductId == i))
                     {
                         sup.Preference = (int)(sup.Price + (decimal)sup.DistanceKm + sup.ShippingCoast);
-
+                        MessageBox.Show($"{CheckAddToRestockList(context.Products.Find(sup.ProductId))}");
                         if (sup.Quantity < CheckAddToRestockList(context.Products.Find(sup.ProductId)))
                         {
                             sup.Preference = 3;
