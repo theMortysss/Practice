@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practice.Entitys;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,10 +22,11 @@ namespace Practice
         {
             using (var context = new Practicebase())
             {
-                var supplier = from sup in context.Suppliers
+                var supplier = from product in context.Products
+                               join sup in context.Suppliers on product.SupplierId equals sup.Id
                                select new
                                {
-                                   Товар = sup.ProductId,
+                                   Товар = product.Name,
                                    Цена = sup.Price,
                                    Количество = sup.Quantity,
                                    Расстояние = sup.DistanceKm,

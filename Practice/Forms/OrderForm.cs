@@ -54,6 +54,8 @@ namespace Practice
                         DateOfSupplie = DateTime.Now,
                     };
                     db.Supplies.Add(sup);
+
+                    db.Products.Find(item.Id).Quantity += item.Quantity;
                 }
 
                 db.SaveChanges();
