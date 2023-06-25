@@ -13,9 +13,13 @@ namespace Practice
         public MainForm()
         {
             InitializeComponent();
-            RemoveExpiretionProducts();
-            GenerateRndQuantity();
-            GetPreference();
+
+            if ((12 == System.DateTime.Now.Hour) && (0 == System.DateTime.Now.Minute))
+            {
+                RemoveExpiretionProducts();
+                GenerateRndQuantity();
+                GetPreference();
+            }
         }
         private static void GetPreference()
         {
