@@ -58,6 +58,7 @@ namespace Practice
                         Quantity = item.Quantity,
                         DateOfSupplie = DateTime.Now,
                     };
+                    db.Supplies.Add(sup);
                     db.Products.Find(item.Id).Quantity += tmp[item.Id - 1];
                 }
                 
@@ -74,15 +75,7 @@ namespace Practice
 
             return goodsToRestock;
         }
-        private static int GetStorage(List<Product> products)
-        {
-            var tmp = new List<Product>();
-            foreach (var product in products)
-            {
-                tmp.Add( product );
-            }
-            return tmp[0].Quantity;
-        }
+
         private static List<Product> GetProductsToRestock(List<Product> products)
         {
             var toRestock = new List<Product>();
